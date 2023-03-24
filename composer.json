@@ -1,5 +1,5 @@
 {
-    "name": "denisneuf/php-paypal-api",
+    "name": "denisneuf/thinkphp-paypal-api",
     "description": "A ThinkPHP wrapper for using PayPal Rest API",
     "keywords": [
         "paypal", "api", "wrapper", "client"
