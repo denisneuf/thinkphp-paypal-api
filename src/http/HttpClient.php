@@ -149,7 +149,7 @@ class HttpClient
      */
     public function userAgent()
     {
-        return "PayPalHttp-PHP HTTP/1.1";
+        return "ThinkPHP-PayPal-API HTTP/1.1";
     }
 
     /**
