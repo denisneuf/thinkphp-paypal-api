@@ -6,18 +6,112 @@
 
 A library to support Paypal Rest API from [ThinkPHP](https://github.com/top-think/framework/) framework.
 
-## USE OF THINKPHP INTEGRATION
 
-```php
-use think\facade\Cache;
+## INSTALL
+
+First Install your ThinkPHP project:
+
+> ThinkPHP6.1的运行环境要求PHP7.2.5+，最高兼容PHP8.2
+
+## INSTALL THINKPHP WITH COMPOSER
+
+~~~
+composer create-project topthink/think tp
+~~~
+
+启动服务
+
+~~~
+cd tp
+php think run
+~~~
+
+You can then access it in a browser
+
+~~~
+http://localhost:8000
+~~~
+
+If the framework needs to be updated
+~~~
+composer update topthink/framework
+~~~
+
+## EDIT YOUR COMPOSER.JSON ADDING IN REQUIRED
+```
+    "require": {
+        "php": ">=7.2.5",
+        ...
+        "denisneuf/thinkphp-paypal-api": ">=0.0.2",
+        ...
+    }
+
 ```
 
-To store the token in the ThinkPHP Cache
+Run an update to install the thinkphp paypal api package
+
+~~~
+composer update
+~~~
+
+
+## USE IT IN YOUR CONTROLLER
 ```php
+<?php
+declare (strict_types = 1);
+
+namespace app\controller;
+
+use app\BaseController;
 use think\facade\Env;
+use think\facade\View;
+use think\Request;
+use think\Log;
+
+use PayPalSdk\Core\PayPalClient;
+use PayPalSdk\disputes\DisputesGetRequest;
+use PayPalHttp\HttpException;
+
+class YourController extends BaseController
+{
+    /**
+     * 显示资源列表
+     *
+     * @return \think\Response
+     */
+
+    public function index(Log $log)
+    {
+
+        $request = new DisputesGetRequest();
+
+        try{
+            $client = PayPalClient::client();
+            $response = $client->execute($request);
+        }
+        catch(HttpException $exception){
+            $message = json_decode($exception->getMessage(), true);
+            dump($message);
+            exit;
+        }
+        finally
+        {
+
+        	$log->info(gettype($response->result->items));
+        }
+
+
+        View::assign('title','View Disputes');
+        View::assign('lang', Env::get('lang.default_lang'));
+        View::assign('description','View Disputes');
+        View::assign('list', $response->result->items);
+        return View::fetch('admin/list/dispute');
+
+    }
+
+}
 ```
 
-To obtain the credentials from ThinkPHP Env
 
 ## SET UP
 
@@ -36,6 +130,22 @@ client_secret = "your-client-secret-sandbox"
 #client_secret = "your-client-secret-production"
 #client_environment = "PRODUCTION"
 ```
+
+
+## THINKPHP INTEGRATION
+
+This library uses Cache and Env from ThinkPHP framework.
+
+```php
+use think\facade\Cache;
+```
+
+To store the token in the ThinkPHP Cache
+```php
+use think\facade\Env;
+```
+
+To obtain the credentials from ThinkPHP Env
 
 
 ### DISCLAIMER
