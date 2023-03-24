@@ -1,8 +1,10 @@
-# Thinkphp Paypal Api
+![](https://box.kancloud.cn/5a0aaa69a5ff42657b5c4715f3d49221) 
+
+# ThinkPHP Paypal Api
 
 [![Packagist Version](https://img.shields.io/packagist/v/denisneuf/thinkphp-paypal-api)](https://packagist.org/packages/denisneuf/thinkphp-paypal-api)
 
-A library to support Paypal Rest API from ThinkPHP framework.
+A library to support Paypal Rest API from [ThinkPHP](https://github.com/top-think/framework/) framework.
 
 ## USE
 
@@ -38,13 +40,10 @@ client_secret = "your-client-secret-sandbox"
 
 ### DISCLAIMER
 
-This package is based on paypal/paypal-checkout-sdk [paypal/paypal-checkout-sdk](http://github.com/paypal/Checkout-PHP-SDK) that has been by the owner on Jul 21, 2022. It is now read-only.
+This package is based on [paypal/paypal-checkout-sdk](http://github.com/paypal/Checkout-PHP-SDK) has been archived by the owner on Jul 21, 2022. It is now read-only.
 
 We are not affiliated with PayPal.
 
 ### LICENSE
 
 ![License](https://img.shields.io/badge/license-MIT-green)
-
-## Disclaimer
-
