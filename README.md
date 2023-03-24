@@ -6,7 +6,7 @@
 
 A library to support Paypal Rest API from [ThinkPHP](https://github.com/top-think/framework/) framework.
 
-## USE
+## USE OF THINKPHP INTEGRATION
 
 ```php
 use think\facade\Cache;
