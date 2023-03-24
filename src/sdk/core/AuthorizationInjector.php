@@ -39,7 +39,8 @@ class AuthorizationInjector implements Injector
     {
         $accessTokenResponse = $this->client->execute(new AccessTokenRequest($this->environment, $this->refreshToken));
         $accessToken = $accessTokenResponse->result;
-        return new AccessToken($accessToken->access_token, $accessToken->token_type, $accessToken->expires_in);
+        Cache::set('paypal_acess_token', $accessToken->access_token, $accessToken->expires_in);
+        //return new AccessToken($accessToken->access_token, $accessToken->token_type, $accessToken->expires_in);
     }
 
     private function isAuthRequest($request)

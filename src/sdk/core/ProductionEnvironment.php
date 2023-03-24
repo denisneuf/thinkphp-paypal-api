@@ -1,8 +1,10 @@
 <?php
 
-namespace PayPalCheckoutSdk\Core;
+namespace PayPalSdk\Core;
 
-class ProductionEnvironment extends PayPalEnvironment
+use PayPalHttp\Environment;
+
+class ProductionEnvironment extends PayPalEnvironment implements Environment
 {
     public function __construct($clientId, $clientSecret)
     {

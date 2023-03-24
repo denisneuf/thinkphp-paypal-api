@@ -2,7 +2,9 @@
 
 namespace PayPalSdk\Core;
 
-class SandboxEnvironment extends PayPalEnvironment
+use PayPalHttp\Environment;
+
+class SandboxEnvironment extends PayPalEnvironment implements Environment
 {
     public function __construct($clientId, $clientSecret)
     {
