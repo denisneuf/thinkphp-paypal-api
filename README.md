@@ -11,7 +11,7 @@ A library to support Paypal Rest API from [ThinkPHP](https://github.com/top-thin
 
 First Install your ThinkPHP project:
 
-> ThinkPHP6.1的运行环境要求PHP7.2.5+，最高兼容PHP8.2
+> The operating environment of ThinkPHP6.1 requires PHP7.2.5+, with a maximum compatibility of PHP8.2
 
 ## INSTALL THINKPHP WITH COMPOSER
 
@@ -19,7 +19,7 @@ First Install your ThinkPHP project:
 composer create-project topthink/think tp
 ~~~
 
-启动服务
+Init service
 
 ~~~
 cd tp
