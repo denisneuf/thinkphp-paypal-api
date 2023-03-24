@@ -1,0 +1,32 @@
+{
+    "name": "denisneuf/php-paypal-api",
+    "description": "A ThinkPHP wrapper for using PayPal Rest API",
+    "keywords": [
+        "paypal", "api", "wrapper", "client"
+    ],
+    "homepage": "https://github.com/denisneuf/thinkphp-paypal-api",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "denisneuf",
+            "email": "denisneuf@hotmail.com",
+            "homepage": "https://leadtech.es",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "ext-curl": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "PayPalSdk\\": "src/sdk",
+            "PayPalHttp\\": "src/http"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
+
