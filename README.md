@@ -13,7 +13,7 @@ First Install your ThinkPHP project:
 
 > The operating environment of ThinkPHP6.1 requires PHP7.2.5+, with a maximum compatibility of PHP8.2
 
-## INSTALL THINKPHP WITH COMPOSER
+### INSTALL THINKPHP WITH COMPOSER
 
 ~~~
 composer create-project topthink/think tp
@@ -37,25 +37,20 @@ If the framework needs to be updated
 composer update topthink/framework
 ~~~
 
-## EDIT YOUR COMPOSER.JSON ADDING IN REQUIRED
+### REQUIRE THINKPHP-PAYPAL-API
 ```
-    "require": {
-        "php": ">=7.2.5",
-        ...
-        "denisneuf/thinkphp-paypal-api": ">=0.0.2",
-        ...
-    }
+composer require denisneuf/thinkphp-paypal-api
 
 ```
 
-Run an update to install the thinkphp paypal api package
+Run an update to install the package
 
 ~~~
 composer update
 ~~~
 
 
-## USE IT IN YOUR CONTROLLER
+### USE IT IN YOUR CONTROLLER
 ```php
 <?php
 declare (strict_types = 1);
@@ -113,7 +108,7 @@ class YourController extends BaseController
 ```
 
 
-## SET UP
+### SET UP
 
 Create or edit your .env file and put in the root of your thinkphp project ( SANDBOX or PRODUCTION )
 ```
@@ -132,7 +127,7 @@ client_secret = "your-client-secret-sandbox"
 ```
 
 
-## THINKPHP INTEGRATION
+### THINKPHP INTEGRATION
 
 This library uses Cache and Env from ThinkPHP framework.
 
