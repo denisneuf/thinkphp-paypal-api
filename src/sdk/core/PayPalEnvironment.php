@@ -2,8 +2,6 @@
 
 namespace PayPalSdk\Core;
 
-//use app\controller\paypal\http\Environment;
-
 use PayPalHttp\Environment;
 
 abstract class PayPalEnvironment implements Environment

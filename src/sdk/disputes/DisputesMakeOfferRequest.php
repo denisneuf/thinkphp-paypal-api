@@ -1,13 +1,12 @@
 <?php
 
-namespace app\controller\paypal\sdk\disputes;
+namespace PayPalSdk\disputes;
 
-use app\controller\paypal\http\HttpRequest;
+use PayPalHttp\HttpRequest;
 
 
 class DisputesMakeOfferRequest extends HttpRequest
 {
-    //function __construct($params = null)
     function __construct($disputeId)
     {
     	parent::__construct("/v1/customer/disputes/{dispute_id}/make-offer", "POST");

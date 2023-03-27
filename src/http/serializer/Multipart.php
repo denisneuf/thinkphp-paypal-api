@@ -7,6 +7,7 @@ use PayPalHttp\HttpRequest;
 use PayPalHttp\Serializer;
 use PayPalHttp\Encoder;
 use PayPalHttp\FormPart;
+use \think\facade\Filesystem;
 
 /**
  * Class Multipart
@@ -26,7 +27,7 @@ class Multipart implements Serializer
     public function encode(HttpRequest $request)
     {
 
-        var_dump("encode Multipart");
+        //var_dump("encode Multipart");
 
 
         if (!is_array($request->body) || !$this->isAssociative($request->body))
@@ -114,6 +115,7 @@ class Multipart implements Serializer
     {
 
 
+
         $fileInfo = new finfo(FILEINFO_MIME_TYPE);
         $filePath = stream_get_meta_data($file)['uri'];
         $data = file_get_contents($filePath);
@@ -136,24 +138,20 @@ class Multipart implements Serializer
     private function prepareFileMultiPart($partName, $filePart, $fileName)
     {
 
+
+        $save_name = \think\facade\Filesystem::disk('private' )->putFile( 'upload', $filePart ); // That I was using
+        $filePart = app()->getRuntimePath() . 'storage' . '/' . $save_name;
         $fileInfo = new finfo(FILEINFO_MIME_TYPE);
-        $filePath = stream_get_meta_data($filePart)['uri'];
         $data = file_get_contents($filePart);
         $mimeType = $fileInfo->buffer($data);
 
-        $splitFilePath = explode(DIRECTORY_SEPARATOR, $filePath);
-        $filePath = end($splitFilePath);
-        $disallow = ["\0", "\"", "\r", "\n"];
-        $filePath = str_replace($disallow, "_", $filePath);
-
         return implode(self::LINEFEED, [
-            //"Content-Disposition: inline; name=\"{$partName}\"; filename=\"{$filePath}\"",
             "Content-Type: {$mimeType}",
             "Content-ID: {$fileName}",
             "Content-Disposition: inline; filename=\"{$fileName}\"",
             "Content-Transfer-Encoding: base64",
             "",
-            base64_encode(file_get_contents($filePart)),
+            base64_encode($data),
         ]);
     }
 
