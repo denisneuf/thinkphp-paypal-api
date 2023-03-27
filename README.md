@@ -142,6 +142,11 @@ use think\facade\Env;
 
 To obtain the credentials from ThinkPHP Env
 
+```php
+use \think\facade\Filesystem;
+
+To upload files from ThinkPHP Filesystem
+```
 
 ### DISCLAIMER
 
